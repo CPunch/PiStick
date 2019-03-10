@@ -1,0 +1,5 @@
+<% if (locals.error && error == true) { %>
+	<div class="banner banner-error"><span class="fa fa-exclamation-triangle"></span> <%= message %></div>
+<% } else if (locals.message && message != '') { %>
+	<div class="banner banner-success"><span class="fa fa-check-circle"></span> <%= message %></div>
+<% } %>

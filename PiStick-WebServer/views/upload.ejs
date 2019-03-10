@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include partials/header %>
+    </head>
+
+    <body>
+        <% include partials/navbar %>
+        <div class="container-fluid">
+			<% include partials/banner %>
+			<div class="theme-dark"> 
+				<form method="post" action="" id="formPost" class="form-large" enctype="multipart/form-data">
+					<div class="title"><span class="fa fa-clipboard white"></span> File Uploader</div>
+					<label for="fileINPUT"><span class="fa fa-image white"></span> File to upload</label>
+					<div class="form-group">
+						<input type="file" id="fileINPUT" name="fileData">
+					</div>
+					<button type="submit" name="with_action" value="post" class="btn btn-primary">Post</button>
+				</form>
+			</div>
+		</div>
+		
+        <% include partials/footer %>
+    </body>
+</html>

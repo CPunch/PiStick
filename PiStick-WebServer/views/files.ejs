@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include partials/header %>
+    </head>
+
+    <body>
+        <% include partials/navbar %>
+        <div class="container-fluid">
+			<% include partials/banner %>
+			<div class="d-flex justify-content-between">
+				<div>
+				<% if (locals.root) { %>
+					<a href="<%= root %>"><span class="fa fa-arrow-left"></span> Back to the top</a>
+				<% } %>
+				</div>
+				<div>
+					<a href="/upload<%= basepath %>" class="btn btn-primary">Upload Here</a>
+				</div>
+			</div>
+			<br>
+			<div class="list-group">
+				<% files.forEach(function(f) {
+					switch(f.Type)
+					{
+						case 0: // Folder %>
+							<a href="/files<%= f.Path+"/"+f.Name %>" class="list-group-item list-group-item-action"><span class="fa fa-folder"></span> <%= f.Name %></a>
+						<% break;
+						case 1: // File %>
+							<a href="/file<%= f.Path+"/"+f.Name %>" class="list-group-item list-group-item-action"><span class="fa fa-file"></span> <%= f.Name %></a>
+						<% break;
+					}
+				}); %>
+			</div>
+		</div>
+		
+        <% include partials/footer %>
+    </body>
+</html>
