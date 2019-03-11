@@ -15,9 +15,6 @@ global.FOLDER = FOLDER;
 global.SHELL_UNMOUNT = SHELL_UNMOUNT;
 global.SHELL_MOUNT = SHELL_MOUNT;
 
-console.log(SHELL_UNMOUNT);
-console.log(SHELL_MOUNT);
-
 // express stuff
 const app = express();
 app.set('view engine', 'ejs');

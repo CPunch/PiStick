@@ -8,30 +8,93 @@
         <% include partials/navbar %>
         <div class="container-fluid">
 			<% include partials/banner %>
+			<h2><%= basepath %></h2>
 			<div class="d-flex justify-content-between">
 				<div>
 				<% if (locals.root) { %>
-					<a href="<%= root %>"><span class="fa fa-arrow-left"></span> Back to the top</a>
+					<a class="btn btn-primary" href="<%= root %>"><span class="fa fa-arrow-left"></span> Back to the top</a>
 				<% } %>
 				</div>
-				<div>
-					<a href="/upload<%= basepath %>" class="btn btn-primary">Upload Here</a>
+				<div style="display: inline-flex">
+					<button class="btn btn-secondary" data-toggle="modal" data-target="#folderModal"><span class="fa fa-folder-plus"></span> New Folder</button>
+					<button class="btn btn-primary" data-toggle="modal" data-target="#fileModal"><span class="fa fa-file-upload"></span> Upload</button>
+					<div class="modal fade" id="folderModal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">New Folder</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<!-- Modal body -->
+							<form class="modal-footer" method="post" action="/create<%= basepath %>">
+								<div class="form-group mr-auto">
+									<label for="nameInput"><span class="fa fa-folder-open"></span> Folder Name</label>
+									<input class="form-control" id="nameInput" name="folderName"></input>
+								</div>
+								<button type="submit" class="btn btn-primary">Create</button>
+							</form>
+
+							</div>
+						</div>
+					</div>
+					<div class="modal fade" id="fileModal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">New File</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<!-- Modal body -->
+							<form class="modal-body" method="post" action="/upload<%= basepath %>" enctype="multipart/form-data">
+								<label for="fileINPUT"><span class="fa fa-folder-open"></span> File</label>
+								<div class="form-group mr-auto">
+									<input type="file" id="fileINPUT" name="fileData"></input>
+								</div>
+								<button type="submit" class="btn btn-primary">Upload</button>
+							</form>
+
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<br>
-			<div class="list-group">
-				<% files.forEach(function(f) {
-					switch(f.Type)
-					{
-						case 0: // Folder %>
-							<a href="/files<%= f.Path+"/"+f.Name %>" class="list-group-item list-group-item-action"><span class="fa fa-folder"></span> <%= f.Name %></a>
-						<% break;
-						case 1: // File %>
-							<a href="/file<%= f.Path+"/"+f.Name %>" class="list-group-item list-group-item-action"><span class="fa fa-file"></span> <%= f.Name %></a>
-						<% break;
-					}
-				}); %>
-			</div>
+				<% if (files.length > 0) {
+					files.forEach(function(f) {
+						switch(f.Type)
+						{
+							case 0: // Folder %>
+								<div class="card mb-4">
+									<div class="card-header">
+										<a href="/files<%= f.Path+"/"+f.Name %>" style="color:#ccc"><span class="fa fa-folder-open"></span> <%= f.Name %></a>
+									</div>
+								</div>
+							<% break;
+							case 1: // File %>
+							<div class="card mb-4">
+								<div class="card-header">
+									<div class="d-flex justify-content-between">
+										<div>
+											<a href="/file<%= f.Path+"/"+f.Name %>" style="color:#fff"><span class="fa fa-file"></span> <%= f.Name %></a>
+										</div>
+										<div>
+											<a href="/remove<%= f.Path+"/"+f.Name %>" style="color:#c10000"><span class="fa fa-trash"></span></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<% break;
+						}
+					}); 
+				} else { %>
+					<div class="banner banner-error"><span class="fa fa-exclamation-triangle"></span> There's nothing here!</div>
+				<% } %>
 		</div>
 		
         <% include partials/footer %>
