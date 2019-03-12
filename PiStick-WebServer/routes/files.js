@@ -3,7 +3,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-const {combineARGS} = require('./routerapi');
+const {combineARGS, reloadUSB} = require('./routerapi');
 
 module.exports = function(router)
 {
@@ -50,6 +50,8 @@ module.exports = function(router)
 			if (!fs.existsSync(folderName)) // make sure directory doesn't already exist
 			{
 				fs.mkdirSync(folderName); // create directory
+
+				reloadUSB(); // reload usb
 			}
 		}
 
@@ -64,6 +66,8 @@ module.exports = function(router)
 		if (fs.existsSync(fileName)) // make sure exists
 		{
 			fs.unlinkSync(fileName); // delete
+
+			reloadUSB(); // reload usb
 		}
 		else
 		{
