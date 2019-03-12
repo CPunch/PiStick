@@ -4,7 +4,7 @@ Raspberry Pi Zero Powered Smart USB Stick
 Hosts an AP with a captive portal. When you connect you can wirelessly upload files to your USB Drive.
 
 # Usage
-This allows you to plug into any usb port (TV, Laptop, etc.) and wirelessly transfer files to a virtual USB Flash drive. This lets you play videos from your phone on your TV, upload your favorite photos an dhsare with others. You can also download uploaded data from the captive portal, delete files to make more space, or even tell others to connect to it so they can download data. 
+This allows you to plug into any usb port (TV, Laptop, etc.) and wirelessly transfer files to a virtual USB Flash drive. This lets you play videos from your phone on your TV, upload your favorite photos and share with others. You can also download uploaded data from the captive portal, delete files to make more space, or even tell others to connect to it so they can download data. 
 
 # Installation
 ## Enable USB Driver
