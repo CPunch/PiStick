@@ -3,6 +3,9 @@ Raspberry Pi Zero Powered Smart USB Stick
 
 Hosts an AP with a captive portal. When you connect you can wirelessly upload files to your USB Drive.
 
+# Usage
+This allows you to plug into any usb port (TV, Laptop, etc.) and wirelessly transfer files to a virtual USB Flash drive. This lets you play videos from your phone on your TV, upload your favorite photos an dhsare with others. You can also download uploaded data from the captive portal, delete files to make more space, or even tell others to connect to it so they can download data. 
+
 # Installation
 ## Enable USB Driver
 Modify /boot/config.txt and add
@@ -87,11 +90,11 @@ node start.js
 
 Now we need to make sure it starts when booting, edit /etc/rc.local and put this right before `exit 0`
 ```
-cd /home/Pi/PiStick/PiStick/PiStick-WebServer
+cd /home/Pi/PiStick/PiStick-WebServer
 node start.js &
 ```
 
-## Install HostAPD and Make Captive Portal
+## Install HostAPD and make the Captive Portal
 > Make sure to do this step LAST. After Running an accesspoint you will **NOT** be able to access the internet from your pi after reboot.
 
 Install dnsmasq and hostapd
@@ -149,7 +152,7 @@ Now we need to tell hostapd where to find that file, edit /etc/default/hostapd a
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
 
-## Now The installation is done, reboot!
+## Now the installation is done, reboot!
 ```
 sudo reboot
 ```
