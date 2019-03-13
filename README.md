@@ -101,7 +101,7 @@ sudo node start.js
 
 Now we need to make sure it starts when booting, edit /etc/rc.local and put this right before `exit 0`
 ```
-cd /home/Pi/PiStick/PiStick-WebServer
+cd /home/pi/PiStick/PiStick-WebServer
 node start.js &
 ```
 
