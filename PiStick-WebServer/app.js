@@ -18,8 +18,8 @@ global.SHELL_MOUNT = SHELL_MOUNT;
 // express stuff
 const app = express();
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({limit: '500mb', extended: true}));
-app.use(bodyParser.json({limit: '500mb', extended: true}));
+app.use(bodyParser.urlencoded({limit: '4gb', extended: true}));
+app.use(bodyParser.json({limit: '4gb', extended: true}));
 app.use(fileUpload());
 app.use(express.static(path.join(__dirname, 'public'))); // static files (libraries, images, css, etc) 
 app.use('/libs/font-awesome', express.static(__dirname + '/node_modules/@fortawesome/fontawesome-free/'));
